@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\RootController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [RootController::class, 'homepage'])->name('home');
+Route::get('/login', [RootController::class, 'login'])->name('login');
+Route::post('/login', [RootController::class, 'login'])->name('login-post');
+
+
+Route::get('/protected', [RootController::class, 'protected_rote']);

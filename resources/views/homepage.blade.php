@@ -1,14 +1,14 @@
 @extends('layouts/main')
 
 @section('body')
-    
+
     <div class="relative bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto">
           <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
             <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
               <polygon points="50,0 100,0 50,100 0,100" />
             </svg>
-      
+
             <div>
               <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
                 <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
@@ -33,14 +33,19 @@
                   <div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
                     <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Hospitals</a>
                     <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Doctors</a>
-                    <a href="{{ route('login') }}" class="font-medium text-indigo-600 hover:text-indigo-500">Log in</a>
+                      @if(\Illuminate\Support\Facades\Auth::user() == null)
+                        <a href="{{ route('login') }}" class="font-medium text-indigo-600 hover:text-indigo-500">Log in</a>
+                        <a href="{{ route('register') }}" class="font-medium text-red-600 hover:text-red-500">Register</a>
+                      @else
+                          <a href="{{ route('home') }}" class="font-medium text-indigo-600 hover:text-indigo-500">Dashboard</a>
+                      @endif
                   </div>
                 </nav>
               </div>
-      
+
               <!--
                 Mobile menu, show/hide based on menu open state.
-      
+
                 Entering: "duration-150 ease-out"
                   From: "opacity-0 scale-95"
                   To: "opacity-100 scale-100"
@@ -66,11 +71,11 @@
                   </div>
                   <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Product</a>
-      
+
                     <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Features</a>
-      
+
                     <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Marketplace</a>
-      
+
                     <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Company</a>
                   </div>
                   <a href="#" class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
@@ -79,7 +84,7 @@
                 </div>
               </div>
             </div>
-      
+
             <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
               <div class="sm:text-center lg:text-left">
                 <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
@@ -87,7 +92,7 @@
                   <span class="block text-indigo-600">{{ env('APP_NAME') }}</span>
                 </h1>
                 <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                  
+
                 </p>
                 <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                   <div class="rounded-md shadow">
@@ -117,7 +122,7 @@
   <div class="flex flex-wrap">
     <div class="w-full">
 
-    
+
       <div class="max-w-sm w-full lg:max-w-full lg:flex">
         <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('https://images.pexels.com/photos/4173156/pexels-photo-4173156.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')" title="Woman holding a mug">
         </div>

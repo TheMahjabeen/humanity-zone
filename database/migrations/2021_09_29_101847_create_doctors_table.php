@@ -18,6 +18,7 @@ class CreateDoctorsTable extends Migration
             $table->string('charges');
             $table->string('specialization');
             $table->string('hospital_id');
+            $table->timestamps();
         });
     }
 
